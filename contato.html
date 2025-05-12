@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato - GamesBR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      margin: 0;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a00ff, #b400ff);
+      padding: 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .conteudo {
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .info-contato {
+      margin-bottom: 30px;
+    }
+
+    .info-contato p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #b400ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8f00cc;
+    }
+
+    .voltar {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #fff;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .voltar:hover {
+      background-color: #ccc;
+    }
+
+    .mensagem-sucesso {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #28a745;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fale Conosco</h1>
+  </header>
+
+  <div class="conteudo">
+    <div class="info-contato">
+      <p><strong>Email:</strong> suporte@gamesbr.com</p>
+      <p><strong>Telefone:</strong> (11) 99999-8888</p>
+    </div>
+
+    <form id="form-contato">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div id="mensagem-sucesso" class="mensagem-sucesso">Enviado com sucesso!</div>
+
+    <a class="voltar" href="main.html">← Voltar à Loja</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('form-contato');
+    const sucesso = document.getElementById('mensagem-sucesso');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      sucesso.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
