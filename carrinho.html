@@ -62,7 +62,7 @@
   <p class="total" id="total"></p>
   <button class="finalizar-btn" onclick="finalizarCompra()">Finalizar Compra</button>
   <br />
-  <a href="main.html" class="voltar">← Voltar para a loja</a>
+  <a href="index.html" class="voltar">← Voltar para a loja</a>
 
   <script>
     const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -86,7 +86,7 @@
     function finalizarCompra() {
       alert("Compra finalizada com sucesso!");
       localStorage.removeItem("carrinho");
-      window.location.href = "main.html";
+      window.location.href = "index.html";
     }
   </script>
 </body>

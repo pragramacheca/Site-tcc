@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dead by Daylight - GamesBR</title>
+  <title>The Sims 4 - GamesBR</title>
   <link rel="stylesheet" href="estilo.css" />
-  <a href="carrinho.html" style="color:#00bfff; text-decoration:none; font-weight:bold;">🛒 Ver Carrinho</a>
+  <a href="../carrinho.html" style="color:#00bfff; text-decoration:none; font-weight:bold;">🛒 Ver Carrinho</a>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
+      background-color: #111;
       color: #fff;
       margin: 0;
       padding: 0;
@@ -24,7 +24,7 @@
 
     h1 {
       font-size: 2.5em;
-      color: #e63946;
+      color: #00d9ff;
     }
 
     .jogo-imagem {
@@ -53,7 +53,7 @@
 
     .comprar-btn {
       margin-top: 20px;
-      background-color: #d00000;
+      background-color: #28a745;
       color: #fff;
       padding: 12px 24px;
       font-size: 1em;
@@ -64,13 +64,13 @@
     }
 
     .comprar-btn:hover {
-      background-color: #a00000;
+      background-color: #218838;
     }
 
     a.voltar {
       display: inline-block;
       margin-top: 30px;
-      color: #e63946;
+      color: #00d9ff;
       text-decoration: none;
     }
 
@@ -82,28 +82,27 @@
 <body>
 
   <div class="container">
-    <h1>Dead by Daylight</h1>
-    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/381210/header.jpg" alt="Dead by Daylight" class="jogo-imagem" />
+    <h1>The Sims 4</h1>
+    <img src="https://www.ea.com/pt-br/games/the-sims/the-sims-4/news/the-sims-4-free-to-play/_jcr_content/featuredImage.img.jpg" alt="The Sims 4" class="jogo-imagem" />
     
     <p class="descricao">
-      <strong>Dead by Daylight</strong> é um jogo multiplayer de terror assimétrico, onde um jogador assume o papel de assassino e os outros quatro jogam como sobreviventes tentando escapar da morte. 
-      O jogo mistura furtividade, trabalho em equipe e pânico, com personagens originais e participações especiais de franquias como Stranger Things, Silent Hill e Resident Evil.
+      <strong>The Sims 4</strong> é um simulador de vida onde você pode criar, personalizar e controlar pessoas virtuais chamadas "Sims".
+      Construa casas, desenvolva histórias e viva momentos únicos em um mundo cheio de possibilidades. Agora gratuito para todos os jogadores!
     </p>
 
     <p class="plataformas">
-      Plataformas: PC (Steam), PlayStation 4 e 5, Xbox One, Series X|S, Nintendo Switch, Android, iOS
+      Plataformas: PC (EA App, Steam), Mac, PlayStation 4, Xbox One
     </p>
 
     <p class="preco">
-      Preço: R$ 39,99
+      Preço: GRÁTIS
     </p>
 
-    <button class="comprar-btn" onclick="adicionarAoCarrinho('Dead by Daylight', 39.99)">Comprar</button>
+    <button class="comprar-btn" onclick="adicionarAoCarrinho('The Sims 4', 0.00)">Obter Agora</button>
 
     <br />
-    <a href="main.html" class="voltar">← Voltar para a loja</a>
+    <a href="../index.html" class="voltar">← Voltar para a loja</a>
   </div>
-
   <script>
     function adicionarAoCarrinho(nome, preco) {
       let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
