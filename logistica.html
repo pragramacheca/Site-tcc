@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Logística - GamesBR</title>
+  <link rel="stylesheet" href="estilo.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .produto {
+      background-color: #000000;
+      border-left: 6px solid #00aa55;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .formulario {
+      margin-bottom: 30px;
+      background-color: #161616;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #0055aa;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #003d80;
+    }
+
+    a.voltar {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0055aa;
+      color: #000000;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    a.voltar:hover {
+      background-color: #003d80;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Painel de Logística</h1>
+
+  <div class="formulario">
+    <h2>Adicionar Produto</h2>
+    <form id="form-produto">
+      <label for="nome">Nome do Produto:</label>
+      <input type="text" id="nome" required>
+
+      <label for="status">Status:</label>
+      <select id="status" required>
+        <option value="Aguardando envio">Aguardando envio</option>
+        <option value="Em transporte">Em transporte</option>
+        <option value="Entregue">Entregue</option>
+      </select>
+
+      <button type="submit">Adicionar Produto</button>
+    </form>
+  </div>
+
+  <h2>Produtos Cadastrados</h2>
+  <div id="produtos"></div>
+
+  <a class="voltar" href="painel.html">← Voltar ao Painel</a>
+
+  <script>
+    const produtosEl = document.getElementById("produtos");
+    const form = document.getElementById("form-produto");
+
+    function carregarProdutos() {
+      const produtos = JSON.parse(localStorage.getItem("produtosLogistica")) || [];
+      produtosEl.innerHTML = produtos.map((p, i) => `
+        <div class="produto">
+          <p><strong>Produto:</strong> ${p.nome}</p>
+          <p><strong>Status:</strong> ${p.status}</p>
+        </div>
+      `).join("") || "<p>Nenhum produto cadastrado ainda.</p>";
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const status = document.getElementById("status").value;
+
+      const novoProduto = { nome, status };
+      const produtos = JSON.parse(localStorage.getItem("produtosLogistica")) || [];
+      produtos.push(novoProduto);
+      localStorage.setItem("produtosLogistica", JSON.stringify(produtos));
+
+      form.reset();
+      carregarProdutos();
+    });
+
+    // Inicializa
+    carregarProdutos();
+  </script>
+
+</body>
+</html>
