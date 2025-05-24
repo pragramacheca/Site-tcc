@@ -3,72 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <title>Painel de Logística - GamesBR</title>
-  <link rel="stylesheet" href="estilo.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 30px;
-      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: #121212;
+      color: #eee;
     }
 
-    h1 {
-      color: #333;
-    }
-
-    .produto {
-      background-color: #000000;
-      border-left: 6px solid #00aa55;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    h1, h2 {
+      color: #e63946;
     }
 
     .formulario {
       margin-bottom: 30px;
-      background-color: #161616;
+      background-color: #1e1e1e;
       padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 0 10px #e6394677;
     }
 
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      font-weight: bold;
     }
 
     input, select {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-bottom: 15px;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
+      background-color: #121212;
+      color: #eee;
+    }
+
+    input:focus, select:focus {
+      border-color: #e63946;
+      outline: none;
+      background-color: #1f1f1f;
     }
 
     button {
       padding: 10px 20px;
-      background-color: #0055aa;
-      color: rgb(0, 0, 0);
+      background-color: #e63946;
+      color: #121212;
+      font-weight: bold;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     button:hover {
-      background-color: #003d80;
+      background-color: #b52b36;
+      color: #fff;
+    }
+
+    .produto {
+      background-color: #1a1a1a;
+      border-left: 6px solid #00c176;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .produto p {
+      margin: 6px 0;
     }
 
     a.voltar {
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #0055aa;
-      color: #000000;
+      background-color: #e63946;
+      color: #121212;
       text-decoration: none;
       border-radius: 6px;
+      font-weight: bold;
     }
 
     a.voltar:hover {
-      background-color: #003d80;
+      background-color: #b52b36;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -78,18 +104,18 @@
 
   <div class="formulario">
     <h2>Adicionar Produto</h2>
-    <form id="form-produto">
+    <form id="form-produto" aria-label="Formulário de logística">
       <label for="nome">Nome do Produto:</label>
-      <input type="text" id="nome" required>
+      <input type="text" id="nome" name="nome" required placeholder="Ex: Controle DualShock 4">
 
       <label for="status">Status:</label>
-      <select id="status" required>
+      <select id="status" name="status" required>
         <option value="Aguardando envio">Aguardando envio</option>
         <option value="Em transporte">Em transporte</option>
         <option value="Entregue">Entregue</option>
       </select>
 
-      <button type="submit">Adicionar Produto</button>
+      <button type="submit">Cadastrar Produto</button>
     </form>
   </div>
 
@@ -104,18 +130,22 @@
 
     function carregarProdutos() {
       const produtos = JSON.parse(localStorage.getItem("produtosLogistica")) || [];
-      produtosEl.innerHTML = produtos.map((p, i) => `
-        <div class="produto">
-          <p><strong>Produto:</strong> ${p.nome}</p>
-          <p><strong>Status:</strong> ${p.status}</p>
-        </div>
-      `).join("") || "<p>Nenhum produto cadastrado ainda.</p>";
+      produtosEl.innerHTML = produtos.length > 0
+        ? produtos.map((p) => `
+            <div class="produto">
+              <p><strong>Produto:</strong> ${p.nome}</p>
+              <p><strong>Status:</strong> ${p.status}</p>
+            </div>
+          `).join("")
+        : "<p style='color:#aaa;'>Nenhum produto cadastrado até o momento.</p>";
     }
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const nome = document.getElementById("nome").value;
+      const nome = document.getElementById("nome").value.trim();
       const status = document.getElementById("status").value;
+
+      if (!nome) return;
 
       const novoProduto = { nome, status };
       const produtos = JSON.parse(localStorage.getItem("produtosLogistica")) || [];
@@ -126,7 +156,7 @@
       carregarProdutos();
     });
 
-    // Inicializa
+    // Inicializa os produtos cadastrados
     carregarProdutos();
   </script>
 

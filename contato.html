@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GamesBR - Contato</title>
   <style>
-    /* Base igual para manter identidade visual */
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -142,7 +141,7 @@
 
   <main>
     <h2>Fale Conosco</h2>
-    <form action="#" method="post" aria-label="Formulário de contato GamesBR">
+    <form onsubmit="enviarContato(); return false;" aria-label="Formulário de contato GamesBR">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" />
 
@@ -159,5 +158,28 @@
   <footer>
     <p>© 2025 GamesBR - Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    function enviarContato() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const dataAtual = new Date().toLocaleString();
+
+      const novoRelato = {
+        nome,
+        email,
+        mensagem,
+        data: dataAtual
+      };
+
+      const relatos = JSON.parse(localStorage.getItem("relatos")) || [];
+      relatos.push(novoRelato);
+      localStorage.setItem("relatos", JSON.stringify(relatos));
+
+      window.location.href = "atendimento.html";
+    }
+  </script>
 </body>
 </html>

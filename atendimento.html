@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Atendimento de E-commerce - GamesBR</title>
-  <link rel="stylesheet" href="estilo.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 30px;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #121212;
+      color: #eee;
+      min-height: 100vh;
     }
 
     h1 {
-      color: #0055aa;
+      color: #e63946;
+      margin-bottom: 20px;
     }
 
     .relato {
-      background-color: #ffffff;
-      border-left: 6px solid #0055aa;
+      background-color: #1e1e1e;
+      border-left: 6px solid #e63946;
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 6px rgba(230, 57, 70, 0.5);
+      word-wrap: break-word;
     }
 
     .relato strong {
-      color: #222;
+      color: #f1f1f1;
     }
 
     .sem-relatos {
       padding: 20px;
-      background-color: #eee;
+      background-color: #2a2a2a;
       border-radius: 8px;
       text-align: center;
       font-style: italic;
-      color: #555;
+      color: #aaa;
     }
 
     a.voltar {
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #0055aa;
-      color: #ffffff;
+      background-color: #e63946;
+      color: #121212;
       text-decoration: none;
       border-radius: 6px;
+      font-weight: 700;
       transition: background-color 0.3s;
     }
 
     a.voltar:hover {
-      background-color: #003d80;
+      background-color: #b52b36;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 15px;
+      }
     }
   </style>
 </head>
@@ -68,14 +78,14 @@
     if (relatos.length === 0) {
       container.innerHTML = '<div class="sem-relatos">Nenhum relato enviado até o momento.</div>';
     } else {
-      container.innerHTML = relatos.map((r) => `
+      container.innerHTML = relatos.map(r => `
         <div class="relato">
           <p><strong>Nome:</strong> ${r.nome}</p>
           <p><strong>Email:</strong> ${r.email}</p>
           <p><strong>Data:</strong> ${r.data}</p>
           <p><strong>Mensagem:</strong><br>${r.mensagem}</p>
         </div>
-      `).join("");
+      `).join('');
     }
   </script>
 
