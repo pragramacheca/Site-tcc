@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Sims 4 - GamesBR</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <a href="../carrinho.html" style="color:#00bfff; text-decoration:none; font-weight:bold;">🛒 Ver Carrinho</a>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #00d9ff;
+    }
+
+    .jogo-imagem {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .descricao {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .plataformas {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .preco {
+      margin-top: 10px;
+      font-size: 1.4em;
+      color: #ccc;
+    }
+
+    .comprar-btn {
+      margin-top: 20px;
+      background-color: #28a745;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .comprar-btn:hover {
+      background-color: #218838;
+    }
+
+    a.voltar {
+      display: inline-block;
+      margin-top: 30px;
+      color: #00d9ff;
+      text-decoration: none;
+    }
+
+    a.voltar:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>The Sims 4</h1>
+    <img src="https://www.ea.com/pt-br/games/the-sims/the-sims-4/news/the-sims-4-free-to-play/_jcr_content/featuredImage.img.jpg" alt="The Sims 4" class="jogo-imagem" />
+    
+    <p class="descricao">
+      <strong>The Sims 4</strong> é um simulador de vida onde você pode criar, personalizar e controlar pessoas virtuais chamadas "Sims".
+      Construa casas, desenvolva histórias e viva momentos únicos em um mundo cheio de possibilidades. Agora gratuito para todos os jogadores!
+    </p>
+
+    <p class="plataformas">
+      Plataformas: PC (EA App, Steam), Mac, PlayStation 4, Xbox One
+    </p>
+
+    <p class="preco">
+      Preço: GRÁTIS
+    </p>
+
+    <button class="comprar-btn" onclick="adicionarAoCarrinho('The Sims 4', 0.00)">Obter Agora</button>
+
+    <br />
+    <a href="../index.html" class="voltar">← Voltar para a loja</a>
+  </div>
+  <script>
+    function adicionarAoCarrinho(nome, preco) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho.push({ nome, preco });
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      alert(`"${nome}" foi adicionado ao carrinho!`);
+    }
+  </script>
+  
+</body>
+</html>

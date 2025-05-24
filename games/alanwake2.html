@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alan Wake II - GamesBR</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #e63946;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #e63946;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.3rem 0 0;
+      font-style: italic;
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    nav {
+      background-color: #2a2a2a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #444;
+    }
+    nav a {
+      color: #eee;
+      margin: 0.3rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      background-color: #e63946;
+      color: #121212;
+      outline: none;
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 2rem 2rem 1.5rem 2rem;
+      box-shadow: 0 0 15px #e63946aa;
+      border: 1px solid #e63946;
+      text-align: center;
+    }
+    section h2 {
+      margin-top: 0;
+      color: #e63946;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    section p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background-color: #e63946;
+      color: #121212;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px #e6394622;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #b52b36;
+      color: #fff;
+      outline: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #121212;
+    }
+    img.jogo-imagem {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) {
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+      nav a {
+        margin-right: 1rem;
+        white-space: nowrap;
+      }
+      main {
+        padding: 0 0.5rem;
+      }
+      section {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GamesBR</h1>
+    <p>Loja de Jogos - Alan Wake II</p>
+  </header>
+
+  <nav>
+    <a href="../index.html">Loja</a>
+    <a href="../carrinho.html">🛒 Carrinho</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Alan Wake II</h2>
+      <img 
+        src="https://cdn1.epicgames.com/offer/alan-wake-2/aw2_standard_2560x1440-2560x1440-231240c89c3d.jpg" 
+        alt="Capa de Alan Wake II" 
+        class="jogo-imagem"
+      />
+      <p>
+        Em <strong>Alan Wake II</strong>, o escritor atormentado retorna em uma narrativa de terror psicológico ainda mais profunda.
+        Explore ambientes sinistros, resolva mistérios e enfrente seus medos mais sombrios em uma experiência visualmente impressionante e cheia de tensão.
+      </p>
+      <p><strong>Plataformas:</strong> PC (Epic Games), PlayStation 5, Xbox Series X|S</p>
+      <p><strong>Preço:</strong> R$ 249,99</p>
+      <button class="btn-primary" onclick="adicionarAoCarrinho('Alan Wake II', 249.99)">Comprar</button>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 GamesBR. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function adicionarAoCarrinho(nome, preco) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho.push({ nome, preco });
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      alert(`"${nome}" foi adicionado ao carrinho!`);
+    }
+  </script>
+
+</body>
+</html>

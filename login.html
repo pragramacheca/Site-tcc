@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login / Cadastro - GamesBR</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .tabs button.active {
+      background: #6a00ff;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button.submit-btn {
+      background-color: #6a00ff;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .voltar {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    .voltar:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <button id="loginTab" class="active" onclick="toggleForm('login')">Login</button>
+      <button id="registerTab" onclick="toggleForm('register')">Cadastro</button>
+    </div>
+
+    <!-- Formulário de Login -->
+    <form id="loginForm" class="active" method="POST" action="php/login.php">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button class="submit-btn" type="submit">Entrar</button>
+    </form>
+
+    <!-- Formulário de Cadastro -->
+    <form id="registerForm" method="POST" action="php/cadastrar.php">
+      <input type="text" name="nome" placeholder="Nome completo" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button class="submit-btn" type="submit">Cadastrar</button>
+    </form>
+
+    <a class="voltar" href="index.html">← Voltar à Loja</a>
+  </div>
+
+  <script>
+    function toggleForm(form) {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const loginTab = document.getElementById('loginTab');
+      const registerTab = document.getElementById('registerTab');
+
+      if (form === 'login') {
+        loginForm.classList.add('active');
+        registerForm.classList.remove('active');
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+      } else {
+        loginForm.classList.remove('active');
+        registerForm.classList.add('active');
+        loginTab.classList.remove('active');
+        registerTab.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

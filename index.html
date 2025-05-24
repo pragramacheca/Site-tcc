@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GamesBR - Loja de Jogos</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #e63946;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #e63946;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.3rem 0 0;
+      font-style: italic;
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    nav {
+      background-color: #2a2a2a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #444;
+    }
+    nav a {
+      color: #eee;
+      margin: 0.3rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      background-color: #e63946;
+      color: #121212;
+      outline: none;
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 2rem 2rem 1.5rem 2rem;
+      box-shadow: 0 0 15px #e63946aa;
+      border: 1px solid #e63946;
+      text-align: center;
+    }
+    section h2 {
+      margin-top: 0;
+      color: #e63946;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    section p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background-color: #e63946;
+      color: #121212;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px #e6394622;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #b52b36;
+      color: #fff;
+      outline: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #121212;
+    }
+    @media (max-width: 600px) {
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+      nav a {
+        margin-right: 1rem;
+        white-space: nowrap;
+      }
+      main {
+        padding: 0 0.5rem;
+      }
+      section {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GamesBR</h1>
+    <p>Encontre os melhores jogos para sua plataforma favorita</p>
+  </header>
+
+  <nav aria-label="Navegação principal">
+    <a href="catalogo.html">Catálogo</a>
+    <a href="contato.html">Contato</a>
+    <a href="painel.html">Painel</a>
+    <a href="carrinho.html">🛒 Seu Carrinho</a>
+
+  </nav>
+
+  <main>
+    <section aria-labelledby="destaques-title">
+      <h2 id="destaques-title">Destaques da Semana</h2>
+      <p>Confira os lançamentos e ofertas imperdíveis da GamesBR.</p>
+      <a href="catalogo.html#xbox360" class="btn-primary">Explore o Catálogo</a>
+    </section>
+  <main>
+  <section aria-labelledby="destaques-title">
+    <h2 id="destaques-title">Destaques da Semana</h2>
+    <p>Confira os lançamentos e ofertas imperdíveis da GamesBR.</p>
+    <a href="catalogo.html#xbox360" class="btn-primary">Explore o Catálogo</a>
+  </section>
+
+  <section aria-labelledby="jogos-title">
+    <h2 id="jogos-title">Jogos em Destaque</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 1.5rem;">
+      <div style="background-color: #2a2a2a; padding: 1rem; border-radius: 8px; width: 250px; box-shadow: 0 0 10px #e6394633;">
+        <h3 style="color: #e63946;">Halo: Combat Evolved</h3>
+        <p style="color: #ccc;">Um clássico do Xbox que redefiniu os jogos de tiro em primeira pessoa.</p>
+        <a href="catalogo.html#xbox" class="btn-primary" style="margin-top: 0.5rem;">Ver mais</a>
+      </div>
+      <div style="background-color: #2a2a2a; padding: 1rem; border-radius: 8px; width: 250px; box-shadow: 0 0 10px #e6394633;">
+        <h3 style="color: #e63946;">Gears of War 2</h3>
+        <p style="color: #ccc;">Combate tático intenso no universo brutal da guerra Locust.</p>
+        <a href="catalogo.html#xbox360" class="btn-primary" style="margin-top: 0.5rem;">Ver mais</a>
+      </div>
+      <div style="background-color: #2a2a2a; padding: 1rem; border-radius: 8px; width: 250px; box-shadow: 0 0 10px #e6394633;">
+        <h3 style="color: #e63946;">Red Dead Redemption</h3>
+        <p style="color: #ccc;">Explore o velho oeste em uma narrativa épica e envolvente.</p>
+        <a href="catalogo.html#xbox360" class="btn-primary" style="margin-top: 0.5rem;">Ver mais</a>
+      </div>
+    </div>
+  </section>
+
+ 
+</main>
+
+    <section aria-labelledby="sobre-title">
+      <h2 id="sobre-title">Sobre a GamesBR</h2>
+      <p>Somos a sua loja online de jogos com o melhor atendimento e variedade para todas as plataformas. Oferecemos jogos novos, usados, acessórios e muito mais.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 GamesBR - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

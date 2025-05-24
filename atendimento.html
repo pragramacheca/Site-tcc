@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atendimento de E-commerce - GamesBR</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 30px;
+      background-color: #121212;
+      color: #eee;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #e63946;
+      margin-bottom: 20px;
+    }
+
+    .relato {
+      background-color: #1e1e1e;
+      border-left: 6px solid #e63946;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(230, 57, 70, 0.5);
+      word-wrap: break-word;
+    }
+
+    .relato strong {
+      color: #f1f1f1;
+    }
+
+    .sem-relatos {
+      padding: 20px;
+      background-color: #2a2a2a;
+      border-radius: 8px;
+      text-align: center;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    a.voltar {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #e63946;
+      color: #121212;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 700;
+      transition: background-color 0.3s;
+    }
+
+    a.voltar:hover {
+      background-color: #b52b36;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Painel de Atendimento de E-commerce</h1>
+  <div id="relatos"></div>
+
+  <a class="voltar" href="painel.html">← Voltar ao Painel</a>
+
+  <script>
+    const container = document.getElementById("relatos");
+    const relatos = JSON.parse(localStorage.getItem("relatos")) || [];
+
+    if (relatos.length === 0) {
+      container.innerHTML = '<div class="sem-relatos">Nenhum relato enviado até o momento.</div>';
+    } else {
+      container.innerHTML = relatos.map(r => `
+        <div class="relato">
+          <p><strong>Nome:</strong> ${r.nome}</p>
+          <p><strong>Email:</strong> ${r.email}</p>
+          <p><strong>Data:</strong> ${r.data}</p>
+          <p><strong>Mensagem:</strong><br>${r.mensagem}</p>
+        </div>
+      `).join('');
+    }
+  </script>
+
+</body>
+</html>

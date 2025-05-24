@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrinho - GamesBR</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #e63946;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      color: #e63946;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.3rem 0 0;
+      font-style: italic;
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    nav {
+      background-color: #2a2a2a;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #444;
+    }
+    nav a {
+      color: #eee;
+      margin: 0.3rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #e63946;
+      color: #121212;
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .carrinho-box {
+      background-color: #1e1e1e;
+      border: 1px solid #e63946;
+      box-shadow: 0 0 10px #e6394644;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    .carrinho-box h2 {
+      color: #ffda00;
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 0;
+    }
+    .item {
+      padding: 1rem;
+      border-bottom: 1px solid #444;
+      font-size: 1.1rem;
+    }
+    .total {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      color: #0f0;
+      text-align: center;
+    }
+    .finalizar-btn {
+      display: block;
+      margin: 2rem auto 0 auto;
+      background-color: #28a745;
+      color: #fff;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px #28a74555;
+    }
+    .finalizar-btn:hover {
+      background-color: #218838;
+    }
+    .voltar {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      color: #00bfff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .voltar:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #121212;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GamesBR</h1>
+    <p>🛒 Seu Carrinho</p>
+  </header>
+
+  <nav>
+    <a href="index.html">🏬 Loja</a>
+  </nav>
+
+  <main>
+    <div class="carrinho-box">
+      <h2>Itens no Carrinho</h2>
+      <div id="carrinho"></div>
+      <p class="total" id="total"></p>
+      <button class="finalizar-btn" onclick="finalizarCompra()">Finalizar Compra</button>
+      <a href="index.html" class="voltar">← Voltar para a loja</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 GamesBR. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    const container = document.getElementById("carrinho");
+    let total = 0;
+
+    if (carrinho.length === 0) {
+      container.innerHTML = "<p>Seu carrinho está vazio.</p>";
+      document.querySelector(".finalizar-btn").style.display = "none";
+    } else {
+      carrinho.forEach(item => {
+        total += item.preco;
+        const div = document.createElement("div");
+        div.className = "item";
+        div.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        container.appendChild(div);
+      });
+      document.getElementById("total").textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    function finalizarCompra() {
+      alert("Compra finalizada com sucesso!");
+      localStorage.removeItem("carrinho");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
