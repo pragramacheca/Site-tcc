@@ -3,351 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Catálogo de Jogos | GamesBR</title>
+  <title>Escolha seu Console | GamesBR</title>
   <style>
-    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #121212;
-      color: #eee;
-      line-height: 1.6;
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
+
     header {
       background-color: #1f1f1f;
-      padding: 1rem 2rem;
       text-align: center;
-      border-bottom: 2px solid #e63946;
+      padding: 2rem 1rem;
+      border-bottom: 3px solid #e63946;
     }
+
     header h1 {
       margin: 0;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-size: 2.5rem;
       color: #e63946;
     }
-    header p {
-      margin: 0.3rem 0 0;
-      font-style: italic;
-      color: #ccc;
-    }
-    nav {
-      background-color: #2a2a2a;
+
+    main {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 0.7rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #444;
+      gap: 2rem;
+      padding: 2rem;
     }
-    nav a {
-      color: #eee;
-      margin: 0.3rem 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-    nav a:hover, nav a:focus {
-      background-color: #e63946;
-      color: #121212;
-      outline: none;
-    }
-    main {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section {
-      margin-bottom: 3rem;
+
+    .console {
       background-color: #1e1e1e;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 0 15px #e63946aa;
       border: 1px solid #e63946;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      padding: 1rem;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.2s, background-color 0.3s;
     }
-    section h2 {
-      margin-top: 0;
-      color: #e63946;
-      font-size: 1.8rem;
-      border-bottom: 2px solid #e63946;
-      padding-bottom: 0.3rem;
-    }
-    h3 {
-      color: #ff7777;
-      margin-top: 1rem;
-      font-weight: 600;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-      margin: 0.5rem 0 1rem 0;
-    }
-    ul li {
-      background-color: #2a2a2a;
-      margin-bottom: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      box-shadow: inset 0 -1px 0 #e63946aa;
-      transition: background-color 0.3s ease;
-    }
-    ul li:hover {
+
+    .console:hover {
       background-color: #e63946;
       color: #121212;
-      cursor: default;
+      transform: scale(1.05);
     }
-    .game-title {
-      font-weight: 700;
-      color: #ffbbbb;
-    }
-    .category-list {
-      font-style: italic;
-      color: #aaa;
-      margin-top: 0.2rem;
-    }
+
     footer {
       text-align: center;
-      padding: 1rem 0;
+      padding: 1rem;
+      background-color: #1f1f1f;
       border-top: 1px solid #444;
-      font-size: 0.9rem;
-      color: #777;
-      background-color: #121212;
-      margin-top: 4rem;
-    }
-    @media (max-width: 600px) {
-      nav {
-        justify-content: flex-start;
-        overflow-x: auto;
-      }
-      nav a {
-        margin-right: 1rem;
-        white-space: nowrap;
-      }
-      main {
-        padding: 0 0.5rem;
-      }
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>GamesBR</h1>
-    <p>Seu catálogo definitivo de jogos por plataforma</p>
+    <p>Escolha seu console para ver os jogos disponíveis</p>
   </header>
 
-  <nav aria-label="Navegação das plataformas">
-    <a href="#xbox360">Xbox 360</a>
-    <a href="#ps3">PlayStation 3</a>
-    <a href="#wiiu">Wii U</a>
-    <a href="#dreamcast">Sega Dreamcast</a>
-    <a href="#ps1">PlayStation 1</a>
-    <a href="#xbox">Xbox Original</a>
-    <a href="#n64">Nintendo 64</a>
-    <a href="#ps2">PlayStation 2</a>
-    <a href="#3do">3DO</a>
-    <a href="#jaguar">Atari Jaguar</a>
-    <a href="#saturn">Sega Saturn</a>
-  </nav>
-
   <main>
-    <!-- Xbox 360 -->
-    <section id="xbox360" tabindex="0">
-      <h2>Xbox 360</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Red Dead Redemption</span>: Mundo aberto no velho oeste, história épica e gameplay imersivo.</li>
-        <li><span class="game-title">The Elder Scrolls V: Skyrim</span>: RPG com liberdade total para explorar e personalizar.</li>
-      </ul>
-      <h3>Outros Jogos Populares</h3>
-      <ul>
-        <li>Halo 3 (FPS multiplayer icônico)</li>
-        <li>GTA V (ação e mundo aberto)</li>
-        <li>Gears of War 2 (shooter em terceira pessoa)</li>
-        <li>Mass Effect 2 (RPG sci-fi narrativo)</li>
-      </ul>
-      <p class="category-list">Categorias: Ação, RPG, Shooter, Multiplayer</p>
-    </section>
-
-    <!-- PlayStation 3 -->
-    <section id="ps3" tabindex="0">
-      <h2>PlayStation 3</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">The Last of Us</span>: Narrativa emocional e jogabilidade tensa.</li>
-        <li><span class="game-title">Uncharted 2: Among Thieves</span>: Ação cinematográfica e aventura de alta qualidade.</li>
-      </ul>
-      <h3>Outros Jogos Populares</h3>
-      <ul>
-        <li>GTA V</li>
-        <li>Red Dead Redemption</li>
-        <li>Metal Gear Solid 4</li>
-        <li>God of War III</li>
-      </ul>
-      <p class="category-list">Categorias: Ação/Aventura, RPG, Stealth, Exclusivos PS3</p>
-    </section>
-
-    <!-- Wii U -->
-    <section id="wiiu" tabindex="0">
-      <h2>Wii U</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">The Legend of Zelda: Breath of the Wild</span>: Revolucionou a exploração em mundo aberto.</li>
-        <li><span class="game-title">Super Mario 3D World</span>: Plataforma divertida com multiplayer local.</li>
-      </ul>
-      <h3>Menções Honrosas</h3>
-      <ul>
-        <li>Mario Kart 8</li>
-        <li>Bayonetta 2</li>
-        <li>Donkey Kong Country: Tropical Freeze</li>
-        <li>Super Smash Bros. for Wii U</li>
-      </ul>
-      <p class="category-list">Categorias: Aventura, Plataforma, Multiplayer Local, Exclusivos Nintendo</p>
-    </section>
-
-    <!-- Sega Dreamcast -->
-    <section id="dreamcast" tabindex="0">
-      <h2>Sega Dreamcast</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Shenmue</span>: Mundo aberto com rotina realista e RPG.</li>
-        <li><span class="game-title">SoulCalibur</span>: Jogo de luta clássico com gráficos marcantes.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>Jet Set Radio</li>
-        <li>Sonic Adventure</li>
-        <li>Skies of Arcadia</li>
-        <li>Resident Evil Code: Veronica</li>
-      </ul>
-      <p class="category-list">Categorias: RPG, Luta, Ação, Exclusivos Dreamcast</p>
-    </section>
-
-    <!-- PlayStation 1 -->
-    <section id="ps1" tabindex="0">
-      <h2>PlayStation 1</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Final Fantasy VII</span>: RPG clássico com narrativa marcante.</li>
-        <li><span class="game-title">Metal Gear Solid</span>: Ação e espionagem com narrativa inovadora.</li>
-      </ul>
-      <h3>Menções Honrosas</h3>
-      <ul>
-        <li>Castlevania: Symphony of the Night</li>
-        <li>Resident Evil 2</li>
-        <li>Gran Turismo 2</li>
-        <li>Tekken 3</li>
-        <li>Crash Bandicoot 3</li>
-      </ul>
-      <p class="category-list">Categorias: RPG, Ação, Corrida, Luta</p>
-    </section>
-
-    <!-- Xbox Original -->
-    <section id="xbox" tabindex="0">
-      <h2>Xbox Original</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Halo: Combat Evolved</span>: FPS revolucionário com multiplayer local.</li>
-        <li><span class="game-title">Fable</span>: RPG com escolhas morais e mundo aberto.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>Star Wars: Knights of the Old Republic</li>
-        <li>Forza Motorsport</li>
-        <li>Splinter Cell</li>
-        <li>Ninja Gaiden</li>
-      </ul>
-      <p class="category-list">Categorias: FPS, RPG, Corrida, Stealth</p>
-    </section>
-
-    <!-- Nintendo 64 -->
-    <section id="n64" tabindex="0">
-      <h2>Nintendo 64</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">The Legend of Zelda: Ocarina of Time</span>: Considerado um dos melhores jogos de todos os tempos.</li>
-        <li><span class="game-title">Super Mario 64</span>: Revolucionou a plataforma 3D.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>GoldenEye 007</li>
-        <li>Mario Kart 64</li>
-        <li>Banjo-Kazooie</li>
-        <li>Star Fox 64</li>
-      </ul>
-      <p class="category-list">Categorias: Aventura, Plataforma, Corrida, FPS</p>
-    </section>
-
-    <!-- PlayStation 2 -->
-    <section id="ps2" tabindex="0">
-      <h2>PlayStation 2</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Grand Theft Auto: San Andreas</span>: Mundo aberto, muitas missões e liberdade total.</li>
-        <li><span class="game-title">Shadow of the Colossus</span>: Aventura única com grandes desafios.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>God of War</li>
-        <li>Final Fantasy X</li>
-        <li>Metal Gear Solid 2</li>
-        <li>Kingdom Hearts</li>
-      </ul>
-      <p class="category-list">Categorias: Ação, RPG, Aventura, Exclusivos PS2</p>
-    </section>
-
-    <!-- 3DO -->
-    <section id="3do" tabindex="0">
-      <h2>3DO</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Gex</span>: Plataforma com humor e estilo únicos.</li>
-        <li><span class="game-title">The Need for Speed</span>: Início da popular franquia de corrida.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>Return Fire</li>
-        <li>Space Hulk</li>
-        <li>King's Quest VI</li>
-      </ul>
-      <p class="category-list">Categorias: Plataforma, Corrida, Estratégia</p>
-    </section>
-
-    <!-- Atari Jaguar -->
-    <section id="jaguar" tabindex="0">
-      <h2>Atari Jaguar</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">Alien vs Predator</span>: Shooter 3D com atmosfera sombria.</li>
-        <li><span class="game-title">Tempest 2000</span>: Shooter clássico modernizado.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>Rayman</li>
-        <li>Wolfenstein 3D</li>
-        <li>Iron Soldier</li>
-      </ul>
-      <p class="category-list">Categorias: Shooter, Ação, Plataforma</p>
-    </section>
-
-    <!-- Sega Saturn -->
-    <section id="saturn" tabindex="0">
-      <h2>Sega Saturn</h2>
-      <h3>Destaques</h3>
-      <ul>
-        <li><span class="game-title">NiGHTS into Dreams</span>: Aventura aérea com visuais oníricos.</li>
-        <li><span class="game-title">Panzer Dragoon Saga</span>: RPG de culto com gráficos impressionantes.</li>
-      </ul>
-      <h3>Outros Jogos</h3>
-      <ul>
-        <li>Virtua Fighter 2</li>
-        <li>Sega Rally Championship</li>
-        <li>Dragon Force</li>
-      </ul>
-      <p class="category-list">Categorias: RPG, Ação, Corrida, Luta</p>
-    </section>
+    <a href="consoles/xbox360.html" class="console">Xbox 360</a>
+    <a href="consoles/ps3.html" class="console">PlayStation 3</a>
+    <a href="consoles/wiiu.html" class="console">Wii U</a>
+    <a href="/consoles/dreamcast.html" class="console">Sega Dreamcast</a>
+    <a href="/consoles/ps1.html" class="console">PlayStation 1</a>
+    <a href="xbox.html" class="console">Xbox Original</a>
+    <a href="n64.html" class="console">Nintendo 64</a>
+    <a href="ps2.html" class="console">PlayStation 2</a>
+    <a href="3do.html" class="console">3DO</a>
+    <a href="jaguar.html" class="console">Atari Jaguar</a>
+    <a href="saturn.html" class="console">Sega Saturn</a>
   </main>
 
   <footer>
