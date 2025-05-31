@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grand Theft Auto V - GamesBR</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <a href="../carrinho.html" style="color:#00bfff; text-decoration:none; font-weight:bold;">🛒 Ver Carrinho</a>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ffda00;
+    }
+
+    .jogo-imagem {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .descricao {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .plataformas {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .preco {
+      margin-top: 10px;
+      font-size: 1.4em;
+      color: #ccc;
+    }
+
+    .comprar-btn {
+      margin-top: 20px;
+      background-color: #28a745;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .comprar-btn:hover {
+      background-color: #218838;
+    }
+
+    a.voltar {
+      display: inline-block;
+      margin-top: 30px;
+      color: #ffda00;
+      text-decoration: none;
+    }
+
+    a.voltar:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Grand Theft Auto V</h1>
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg" alt="GTA V" class="jogo-imagem" />
+    
+    <p class="descricao">
+      <strong>Grand Theft Auto V</strong> é um dos jogos mais populares de todos os tempos, trazendo uma experiência intensa de ação em mundo aberto. 
+      Situado na cidade fictícia de Los Santos, você acompanha as histórias interligadas de três criminosos: Michael, Franklin e Trevor, 
+      enquanto eles realizam assaltos ousados, enfrentam gangues e se envolvem em diversas atividades ilegais — tudo isso com muita liberdade e humor ácido.
+    </p>
+
+    <p class="plataformas">
+      Plataformas: PC (Steam, Epic Games, Rockstar), PlayStation 4 e 5, Xbox One e Series X|S
+    </p>
+
+    <p class="preco">
+      Preço: R$ 79,99
+    </p>
+
+    <button class="comprar-btn" onclick="adicionarAoCarrinho('Grand Theft Auto V', 79.99)">Comprar</button>
+
+    <br />
+    <a href="../index.html" class="voltar">← Voltar para a loja</a>
+  </div>
+
+  <script>
+    function adicionarAoCarrinho(nome, preco) {
+      alert(`"${nome}" foi adicionado ao carrinho por R$ ${preco.toFixed(2)}!`);
+    }
+  </script>
+</body>
+</html>

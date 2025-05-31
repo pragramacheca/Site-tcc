@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wii U | GamesBR</title>
+  <style>
+    /* Estilos Gerais do Site (COPIAR E COLAR PARA TODOS OS ARQUIVOS DE CONSOLE) */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1a1a2e; /* Fundo mais escuro */
+      color: #e0e0e0; /* Cor de texto padrão */
+      line-height: 1.5; /* Ligeiramente menor */
+      font-size: 0.95em; /* Fonte base um pouco menor */
+    }
+    header, footer {
+      text-align: center;
+      background-color: #0f0f1c; /* Cor de fundo do header/footer */
+      padding: 1rem; /* Diminuído */
+      border-bottom: 2px solid #6c5ce7; /* Cor de destaque */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
+    }
+    header h1 {
+      color: #8a7cfd; /* Título com cor de destaque */
+      margin: 0;
+      font-size: 2em; /* Diminuído */
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra mais suave */
+    }
+    header p {
+        color: #b0b0b0;
+        font-size: 1em; /* Diminuído */
+    }
+    nav {
+      background-color: #2a2a4a; /* Cor de fundo da navegação */
+      padding: 0.6rem; /* Diminuído */
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+    }
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0 1rem; /* Diminuído */
+      font-weight: bold;
+      transition: color 0.3s ease;
+      padding: 0.4rem 0.7rem; /* Diminuído */
+      border-radius: 4px; /* Ligeiramente menor */
+    }
+    nav a:hover {
+      color: #ffffff;
+      background-color: #6c5ce7;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1080px; /* Largura máxima diminuída */
+      margin: 1.5rem auto; /* Margem diminuída */
+      padding: 0 1rem; /* Diminuído */
+    }
+
+    h2 {
+      color: #6c5ce7; /* Títulos de seção com cor de destaque */
+      border-bottom: 1px solid #3a3a5a; /* Linha mais fina */
+      padding-bottom: 0.4rem; /* Diminuído */
+      margin-bottom: 1.5rem; /* Diminuído */
+      font-size: 1.8em; /* Diminuído */
+    }
+
+    /* Estilos para a Grade de Jogos (Estilo Epic Games) */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Min-width dos cards diminuído */
+      gap: 1.5rem; /* Espaçamento entre os cartões diminuído */
+      justify-content: center;
+    }
+
+    .game-card {
+      background-color: #2a2a4a; /* Fundo do cartão do jogo */
+      border-radius: 8px; /* Diminuído */
+      overflow: hidden; /* Garante que a imagem não saia do card */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transição mais rápida */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Para botão "Comprar" ir para o final */
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px); /* Efeito de elevação menor */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); /* Sombra mais suave */
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 160px; /* Altura fixa para as capas diminuída */
+      object-fit: cover; /* Recorta a imagem para cobrir a área */
+      display: block;
+      border-bottom: 1px solid #3a3a5a;
+    }
+
+    .game-card-content {
+      padding: 1rem; /* Diminuído */
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; /* Permite que o conteúdo ocupe espaço restante */
+    }
+
+    .game-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem; /* Diminuído */
+      color: #ffffff;
+      font-size: 1.2em; /* Diminuído */
+      text-align: center; /* Centraliza o título */
+    }
+
+    .game-card-price {
+      font-size: 1.1em; /* Diminuído */
+      font-weight: bold;
+      color: #4CAF50; /* Verde para o preço */
+      text-align: center; /* Centraliza o preço */
+      margin-bottom: 0.8rem; /* Diminuído */
+    }
+
+    /* Modal de Detalhes do Jogo */
+    .game-modal {
+      display: none; /* Escondido por padrão */
+      position: fixed; /* Fixado na tela */
+      z-index: 1000; /* Acima de outros elementos */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; /* Adiciona scroll se o conteúdo for grande */
+      background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro semi-transparente */
+      justify-content: center;
+      align-items: center;
+      padding: 15px; /* Espaçamento interno */
+      box-sizing: border-box;
+    }
+
+    .game-modal-content {
+      background-color: #2a2a4a;
+      padding: 25px; /* Diminuído */
+      border-radius: 10px; /* Diminuído */
+      width: 95%; /* Ligeiramente maior para telas pequenas */
+      max-width: 750px; /* Largura máxima do modal diminuída */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); /* Sombra mais suave */
+      position: relative;
+      display: flex;
+      flex-wrap: wrap; /* Permite que os elementos quebrem a linha */
+      gap: 20px; /* Espaçamento entre os elementos do modal */
+    }
+
+    .game-modal-content .close-button {
+      color: #e0e0e0;
+      position: absolute;
+      top: 10px; /* Posição ajustada */
+      right: 20px; /* Posição ajustada */
+      font-size: 30px; /* Diminuído */
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .game-modal-content .close-button:hover,
+    .game-modal-content .close-button:focus {
+      color: #ff4d4d;
+      text-decoration: none;
+    }
+
+    .game-modal-image {
+        flex: 1 1 250px; /* Min-width diminuído */
+        max-width: 100%; /* Garante que a imagem não transborde */
+        height: auto;
+        border-radius: 6px; /* Diminuído */
+        box-shadow: 0 3px 10px rgba(0,0,0,0.5); /* Sombra mais suave */
+        object-fit: cover;
+    }
+
+    .game-modal-details {
+        flex: 2 1 350px; /* Min-width diminuído */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .game-modal-details h3 {
+        color: #8a7cfd;
+        font-size: 1.8em; /* Diminuído */
+        margin-top: 0;
+        margin-bottom: 10px; /* Diminuído */
+        border-bottom: 1px solid #3a3a5a;
+        padding-bottom: 8px; /* Diminuído */
+    }
+
+    .game-modal-details p {
+        margin-bottom: 10px; /* Diminuído */
+        font-size: 1em; /* Diminuído */
+        color: #c0c0c0;
+    }
+
+    .modal-price {
+        font-size: 1.5em; /* Diminuído */
+        font-weight: bold;
+        color: #4CAF50;
+        margin-bottom: 15px; /* Diminuído */
+        text-align: right; /* Preço alinhado à direita no modal */
+    }
+
+    .modal-add-to-cart {
+      background-color: #6c5ce7;
+      color: white;
+      padding: 0.8rem 1.5rem; /* Diminuído */
+      border: none;
+      border-radius: 6px; /* Diminuído */
+      cursor: pointer;
+      font-size: 1em; /* Diminuído */
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      align-self: flex-end; /* Alinha o botão ao final da coluna */
+      width: 100%; /* Ocupa toda a largura disponível no flex item */
+      max-width: 200px; /* Limita a largura do botão para não ficar muito grande */
+      margin-top: auto; /* Empurra para baixo se houver espaço */
+    }
+
+    .modal-add-to-cart:hover {
+      background-color: #5a4acb;
+    }
+
+    /* Footer */
+    footer {
+        margin-top: 2rem; /* Margem diminuída */
+        padding: 1rem; /* Diminuído */
+        background-color: #0f0f1c;
+        border-top: 2px solid #6c5ce7; /* Diminuído */
+        color: #b0b0b0;
+        font-size: 0.9em; /* Diminuído */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GamesBR - Wii U</h1>
+    <p>Explore os melhores jogos do Wii U</p>
+  </header>
+
+  <nav>
+    <a href="../catalogo.html">🏠 Voltar para Consoles</a>
+    <a href="../carrinho.html">🛒 Carrinho</a>
+  </nav>
+
+  <main>
+    <h2>Destaques</h2>
+    <div class="game-grid">
+      <div class="game-card" data-game-id="wiiu-botw" data-game-name="The Legend of Zelda: Breath of the Wild" data-game-price="55.00"
+           data-game-description="Um dos jogos mais aclamados de todos os tempos, revolucionou a exploração em mundo aberto com liberdade sem precedentes.">
+        <img src="../img/consoles/jogo/Legend_of_Zelda_Breath_of_the_Wild_capa.png" alt="Capa de The Legend of Zelda: Breath of the Wild">
+        <div class="game-card-content">
+          <h3>Breath of the Wild</h3>
+          <p class="game-card-price">R$ 55.00</p>
+          <button class="modal-add-to-cart" data-game-id="wiiu-botw" data-game-name="The Legend of Zelda: Breath of the Wild" data-game-price="55.00">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+      <div class="game-card" data-game-id="wiiu-mario3dworld" data-game-name="Super Mario 3D World" data-game-price="39.99"
+           data-game-description="Um divertido e criativo jogo de plataforma 3D com multiplayer local cooperativo e o poder da roupa de gato.">
+        <img src="../img/consoles/jogo/Super-mario-3d-world.webp" alt="Capa de Super Mario 3D World">
+        <div class="game-card-content">
+          <h3>Super Mario 3D World</h3>
+          <p class="game-card-price">R$ 39.99</p>
+          <button class="modal-add-to-cart" data-game-id="wiiu-mario3dworld" data-game-name="Super Mario 3D World" data-game-price="39.99">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+      <div class="game-card" data-game-id="wiiu-mariokart8" data-game-name="Mario Kart 8" data-game-price="34.50"
+           data-game-description="Corridas de kart aceleradas com gravidade zero e gráficos vibrantes, um dos melhores da série.">
+        <img src="../img/consoles/jogo/mario-Kart-8.jpeg" alt="Capa de Mario Kart 8">
+        <div class="game-card-content">
+          <h3>Mario Kart 8</h3>
+          <p class="game-card-price">R$ 34.50</p>
+          <button class="modal-add-to-cart" data-game-id="wiiu-mariokart8" data-game-name="Mario Kart 8" data-game-price="34.50">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+      <div class="game-card" data-game-id="wiiu-smashbros" data-game-name="Super Smash Bros. for Wii U" data-game-price="42.00"
+           data-game-description="Aclamado jogo de luta crossover com um grande elenco de personagens da Nintendo e de outras franquias.">
+        <img src="../img/consoles/jogo/super-smash-bros-ultimate.jpeg" alt="Capa de Super Smash Bros. for Wii U">
+        <div class="game-card-content">
+          <h3>Super Smash Bros.</h3>
+          <p class="game-card-price">R$ 42.00</p>
+          <button class="modal-add-to-cart" data-game-id="wiiu-smashbros" data-game-name="Super Smash Bros. for Wii U" data-game-price="42.00">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+       <div class="game-card" data-game-id="wiiu-splatoon" data-game-name="Splatoon" data-game-price="29.99"
+            data-game-description="Um inovador shooter em terceira pessoa focado em tinta e territorialidade, com estilo único e divertido.">
+         <img src="../img/consoles/jogo/Splatoon.jpg" alt="Capa de Splatoon">
+         <div class="game-card-content">
+           <h3>Splatoon</h3>
+           <p class="game-card-price">R$ 29.99</p>
+           <button class="modal-add-to-cart" data-game-id="wiiu-splatoon" data-game-name="Splatoon" data-game-price="29.99">Adicionar ao Carrinho</button>
+         </div>
+       </div>
+
+       <div class="game-card" data-game-id="wiiu-xenobladechroniclesx" data-game-name="Xenoblade Chronicles X" data-game-price="48.00"
+            data-game-description="Um vasto RPG de mundo aberto com mechs exploráveis e um sistema de combate profundo.">
+         <img src="../img/consoles/jogo/Xenoblade-Chronicles-X.jpeg" alt="Capa de Xenoblade Chronicles X">
+         <div class="game-card-content">
+           <h3>Xenoblade Chronicles X</h3>
+           <p class="game-card-price">R$ 48.00</p>
+           <button class="modal-add-to-cart" data-game-id="wiiu-xenobladechroniclesx" data-game-name="Xenoblade Chronicles X" data-game-price="48.00">Adicionar ao Carrinho</button>
+         </div>
+       </div>
+    </div>
+  </main>
+
+  <div id="gameDetailsModal" class="game-modal">
+    <div class="game-modal-content">
+      <span class="close-button">&times;</span>
+      <img id="modalGameImage" class="game-modal-image" src="" alt="Capa do Jogo">
+      <div class="game-modal-details">
+        <h3 id="modalGameName">Nome do Jogo</h3>
+        <p id="modalGameDescription">Descrição do jogo.</p>
+        <p id="modalGamePrice" class="modal-price">R$ 0.00</p>
+        <button id="modalAddToCartButton" class="modal-add-to-cart">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 GamesBR - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    /* JavaScript (COPIAR E COLAR PARA TODOS OS ARQUIVOS DE CONSOLE) */
+    document.addEventListener('DOMContentLoaded', () => {
+      const gameCards = document.querySelectorAll('.game-card');
+      const gameModal = document.getElementById('gameDetailsModal');
+      const closeButton = document.querySelector('.close-button');
+      const modalGameImage = document.getElementById('modalGameImage');
+      const modalGameName = document.getElementById('modalGameName');
+      const modalGameDescription = document.getElementById('modalGameDescription');
+      const modalGamePrice = document.getElementById('modalGamePrice');
+      const modalAddToCartButton = document.getElementById('modalAddToCartButton');
+
+      // Abre o modal ao clicar no cartão do jogo
+      gameCards.forEach(card => {
+        card.addEventListener('click', (event) => {
+          // Verifica se o clique não foi no botão de adicionar ao carrinho dentro do card
+          if (!event.target.classList.contains('modal-add-to-cart')) {
+            const gameId = card.dataset.gameId;
+            const gameName = card.dataset.gameName;
+            const gamePrice = parseFloat(card.dataset.gamePrice);
+            const gameDescription = card.dataset.gameDescription;
+            const gameImage = card.querySelector('img').src; // Pega a URL da imagem do card
+
+            modalGameImage.src = gameImage;
+            modalGameName.textContent = gameName;
+            modalGameDescription.textContent = gameDescription;
+            modalGamePrice.textContent = `R$ ${gamePrice.toFixed(2)}`;
+
+            // Define os dados para o botão "Adicionar ao Carrinho" do modal
+            modalAddToCartButton.dataset.gameId = gameId;
+            modalAddToCartButton.dataset.gameName = gameName;
+            modalAddToCartButton.dataset.gamePrice = gamePrice;
+
+            gameModal.style.display = 'flex'; // Exibe o modal
+          }
+        });
+      });
+
+      // Fecha o modal ao clicar no botão 'x'
+      closeButton.addEventListener('click', () => {
+        gameModal.style.display = 'none';
+      });
+
+      // Fecha o modal ao clicar fora dele
+      window.addEventListener('click', (event) => {
+        if (event.target === gameModal) {
+          gameModal.style.display = 'none';
+        }
+      });
+
+      // Função para adicionar item ao carrinho
+      function addToCart(gameId, gameName, gamePrice) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const existingItemIndex = cart.findIndex(cartItem => cartItem.id === gameId);
+
+        if (existingItemIndex > -1) {
+          cart[existingItemIndex].quantity += 1;
+        } else {
+          cart.push({ id: gameId, name: gameName, price: gamePrice, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${gameName} adicionado ao carrinho!`);
+      }
+
+      // Evento para os botões "Adicionar ao Carrinho" dos cartões
+      document.querySelectorAll('.game-card .modal-add-to-cart').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede que o clique no botão abra o modal
+            const gameId = button.dataset.gameId;
+            const gameName = button.dataset.gameName;
+            const gamePrice = parseFloat(button.dataset.gamePrice);
+            addToCart(gameId, gameName, gamePrice);
+        });
+      });
+
+      // Evento para o botão "Adicionar ao Carrinho" do modal
+      modalAddToCartButton.addEventListener('click', () => {
+        const gameId = modalAddToCartButton.dataset.gameId;
+        const gameName = modalAddToCartButton.dataset.gameName;
+        const gamePrice = parseFloat(modalAddToCartButton.dataset.gamePrice);
+        addToCart(gameId, gameName, gamePrice);
+        gameModal.style.display = 'none'; // Fecha o modal após adicionar ao carrinho
+      });
+    });
+  </script>
+</body>
+</html>

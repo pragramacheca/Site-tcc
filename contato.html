@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GamesBR - Contato</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #e63946;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #e63946;
+      font-size: 2.5rem;
+    }
+    nav {
+      background-color: #2a2a2a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #444;
+    }
+    nav a {
+      color: #eee;
+      margin: 0.3rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      background-color: #e63946;
+      color: #121212;
+      outline: none;
+    }
+    main {
+      flex: 1;
+      max-width: 480px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      box-shadow: 0 0 15px #e63946aa;
+      border: 1px solid #e63946;
+    }
+    h2 {
+      color: #e63946;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      color: #ddd;
+    }
+    input, textarea {
+      background-color: #121212;
+      border: 1px solid #555;
+      border-radius: 5px;
+      color: #eee;
+      padding: 0.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #e63946;
+      background-color: #1f1f1f;
+    }
+    button {
+      background-color: #e63946;
+      color: #121212;
+      font-weight: 700;
+      padding: 0.8rem 1.2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover, button:focus {
+      background-color: #b52b36;
+      color: #fff;
+      outline: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #121212;
+    }
+    @media (max-width: 600px) {
+      main {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GamesBR</h1>
+  </header>
+
+  <nav aria-label="Navegação principal">
+    <a href="index.html">Início</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="contato.html" aria-current="page">Contato</a>
+    <a href="carrinho.html">🛒 Seu Carrinho</a>
+  </nav>
+
+  <main>
+    <h2>Fale Conosco</h2>
+    <form onsubmit="enviarContato(); return false;" aria-label="Formulário de contato GamesBR">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" />
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com" />
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Escreva sua mensagem aqui..."></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 GamesBR - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function enviarContato() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const dataAtual = new Date().toLocaleString();
+
+      const novoRelato = {
+        nome,
+        email,
+        mensagem,
+        data: dataAtual
+      };
+
+      const relatos = JSON.parse(localStorage.getItem("relatos")) || [];
+      relatos.push(novoRelato);
+      localStorage.setItem("relatos", JSON.stringify(relatos));
+
+      window.location.href = "atendimento.html";
+    }
+  </script>
+</body>
+</html>

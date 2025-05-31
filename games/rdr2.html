@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red Dead Redemption 2 - GamesBR</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <a href="../carrinho.html" style="color:#00bfff; text-decoration:none; font-weight:bold;">🛒 Ver Carrinho</a>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff4c00;
+    }
+
+    .jogo-imagem {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .descricao {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .plataformas {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .preco {
+      margin-top: 10px;
+      font-size: 1.4em;
+      color: #ccc;
+    }
+
+    .comprar-btn {
+      margin-top: 20px;
+      background-color: #28a745;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .comprar-btn:hover {
+      background-color: #218838;
+    }
+
+    a.voltar {
+      display: inline-block;
+      margin-top: 30px;
+      color: #ff4c00;
+      text-decoration: none;
+    }
+
+    a.voltar:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Red Dead Redemption 2</h1>
+    <img src="https://image.api.playstation.com/vulcan/img/rnd/202010/2613/j1cdjc6NTK2uP1OQgN9UflMh.png" alt="Red Dead Redemption 2" class="jogo-imagem" />
+    
+    <p class="descricao">
+      <strong>Red Dead Redemption 2</strong> é uma obra-prima do Velho Oeste desenvolvida pela Rockstar Games. Com gráficos incríveis, narrativa profunda e um vasto mundo aberto,
+      você assume o papel de Arthur Morgan, um fora-da-lei tentando sobreviver enquanto os tempos mudam. Envolva-se em caçadas, tiroteios, fugas e missões dramáticas em um dos melhores jogos já feitos.
+    </p>
+
+    <p class="plataformas">
+      Plataformas: PC (Rockstar Games Launcher, Steam, Epic Games), PlayStation 4, Xbox One
+    </p>
+
+    <p class="preco">
+      Preço: R$ 199,90
+    </p>
+
+    <button class="comprar-btn" onclick="adicionarAoCarrinho('Red Dead Redemption 2', 199.90)">Comprar</button>
+
+    <br />
+    <a href="../index.html" class="voltar">← Voltar para a loja</a>
+  </div>
+
+  <script>
+    function adicionarAoCarrinho(nome, preco) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho.push({ nome, preco });
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      alert(`"${nome}" foi adicionado ao carrinho!`);
+    }
+  </script>
+  
+</body>
+</html>
